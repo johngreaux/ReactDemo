@@ -1,3 +1,46 @@
 .App {
     background-color: #ccc;
 }
+
+.HeaderContainer {
+    height: 75px;
+    background-color: #eee;
+}
+
+.HeaderIconPadding {
+    padding-left: 15px;
+}
+
+.HeaderIcon {
+    color:#93cc93;
+}
+
+.NavLinkContainer {
+    display: inline-block;
+    padding-left: 15px;
+}
+
+.NavLink {
+    padding-left: 5px;
+}
+
+.FooterContainer {
+    height: 100px;
+    background-color:#555;
+}
+
+.FooterPadding {
+    padding-top: 40px;
+}
+
+.FooterContent {
+    color:#fff;
+}
+
+.no-padding {
+    padding:0px;
+}
+
+.no-margin {
+    margin: 0px;
+}

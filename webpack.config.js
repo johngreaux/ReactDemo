@@ -4,18 +4,21 @@ var ExtractTextPLugin = require("extract-text-webpack-plugin");
 module.exports = {
     entry: __dirname + "/src/index.js",
     output: {
-        path: __dirname + "/ReactDemo/content",
+        path: __dirname + "/ReactDemo/content/",
         filename: "bundle.js",
-        publicPath: "content"
+        //publicPath:  __dirname + "/content/"
     },
+    // resolve: {
+    //     extensions: ['', '.js', '.jsx']
+    // },
     module: {
         loaders: [
             {
-                test: /\.js$/,
+                test: /\.jsx?$/,
                 exclude: /(node_modules)/,
                 loader: 'babel-loader',
                 query: {
-                    presets: ["env"]
+                    presets: ['es2015', 'react', 'latest', 'stage-2']
                 }
             },
             {
@@ -35,8 +38,27 @@ module.exports = {
             {
                 test: /\.(jpg|png)$/,
                 loader: 'url-loader'
+            },
+            {
+                test: /\.(woff|woff2)(\?v=\d+\.\d+\.\d+)?$/,
+                loader: 'url-loader'
+            },
+            {
+                test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
+                loader: 'url-loader'
+            },
+            {
+                test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
+                loader: 'file-loader'
+            },
+            {
+                test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
+                loader: 'url-loader'
             }
         ]
     },
-    plugins: [ new ExtractTextPLugin("bundle.css") ]
+    // externals: {
+    //     'react': 'React'
+    // },
+    plugins: [new ExtractTextPLugin("bundle.css")]
 };

@@ -1,9 +1,10 @@
 import React from 'react';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 import Home from './Home';
 import About from './About';
 import Missing from './Missing';
-import '../styles/App.css';
+import Bootstrap from 'bootstrap/dist/css/bootstrap.css';
+import '../styles/App.scss';
 
 class App extends React.Component {
     constructor(props) {
@@ -91,12 +92,36 @@ class App extends React.Component {
     render() {
         return (
             <div className="App">
-                <div>
-                    <Link to="/Home" onClick={ this.handleNavAction.bind(this, 0) }>Home</Link>
-                    <Link to="/About" onClick={ this.handleNavAction.bind(this, 1) }>About</Link>
-                    <Link to="/Test" onClick={ this.handleNavAction.bind(this, -1) }>Bad Link</Link>
+                <div className="container-fluid no-padding">
+                    <div className="HeaderContainer row no-margin">
+                        <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12 no-padding">
+                            <div className="row no-margin">
+                                <div className="HeaderIconPadding h2">
+                                    <span className="HeaderIcon glyphicon glyphicon-folder-open"></span>
+                                    <span className="HeaderIconPadding">Test</span>
+
+                                    <h5 className="NavLinkContainer">
+                                        <Link className="NavLink" to="/Home" onClick={this.handleNavAction.bind(this, 0)}>Home</Link>
+                                        <Link className="NavLink" to="/About" onClick={this.handleNavAction.bind(this, 1)}>About</Link>
+                                        <Link className="NavLink" to="/Test" onClick={this.handleNavAction.bind(this, -1)}>Bad Link</Link>
+                                    </h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                { this.state.activeComponent }
+
+                {this.state.activeComponent}
+
+                <div className="container-fluid no-padding">
+                    <div className="FooterContainer row no-margin">
+                        <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12 no-padding">
+                            <div className="FooterPadding row no-margin">
+                                <div className="FooterContent text-center">John Greaux - 2017</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         );
     };
