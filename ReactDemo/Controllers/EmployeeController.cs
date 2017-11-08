@@ -44,7 +44,7 @@ namespace ReactDemo.Controllers
             _repo.Save();
         }
 
-        // DELETE:api/employee/5
+        // DELETE: api/employee/5
         public void Delete(int id)
         {
             _repo.DeleteEmployee(id);
