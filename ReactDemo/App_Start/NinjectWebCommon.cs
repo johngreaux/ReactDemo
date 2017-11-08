@@ -1,12 +1,12 @@
-﻿using System;
-using System.Web;
-using System.Web.Http;
-using Microsoft.Web.Infrastructure.DynamicModuleHelper;
+﻿using Microsoft.Web.Infrastructure.DynamicModuleHelper;
 using Ninject;
 using Ninject.Web.Common;
-using Ninject.Web.WebApi;
 using Ninject.Web.Common.WebHost;
+using Ninject.Web.WebApi;
 using ReactDemo.Models.DAL;
+using System;
+using System.Web;
+using System.Web.Http;
 
 namespace ReactDemo.App_Start
 {

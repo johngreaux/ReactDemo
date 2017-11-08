@@ -11,7 +11,7 @@ namespace ReactDemo.Controllers
 {
     public class EmployeeController : ApiController
     {
-        private IEmployeeRepository _repo;
+        private readonly IEmployeeRepository _repo;
 
         public EmployeeController(IEmployeeRepository repo)
         {

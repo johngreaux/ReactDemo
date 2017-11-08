@@ -2388,7 +2388,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-__webpack_require__(83);
+__webpack_require__(85);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -25669,7 +25669,7 @@ var _Home = __webpack_require__(79);
 
 var _Home2 = _interopRequireDefault(_Home);
 
-var _About = __webpack_require__(81);
+var _About = __webpack_require__(83);
 
 var _About2 = _interopRequireDefault(_About);
 
@@ -25677,11 +25677,11 @@ var _Missing = __webpack_require__(35);
 
 var _Missing2 = _interopRequireDefault(_Missing);
 
-var _bootstrap = __webpack_require__(84);
+var _bootstrap = __webpack_require__(86);
 
 var _bootstrap2 = _interopRequireDefault(_bootstrap);
 
-__webpack_require__(85);
+__webpack_require__(87);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -25884,7 +25884,11 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-__webpack_require__(80);
+var _EmployeeTable = __webpack_require__(80);
+
+var _EmployeeTable2 = _interopRequireDefault(_EmployeeTable);
+
+__webpack_require__(82);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -25898,7 +25902,7 @@ var Home = function Home() {
             _react2.default.createElement(
                 'div',
                 { className: 'col-xs-12 col-sm-12 col-md-12 col-lg-12 no-padding' },
-                'Home'
+                _react2.default.createElement(_EmployeeTable2.default, { url: 'api/employee/' })
             )
         )
     );
@@ -25908,9 +25912,96 @@ exports.default = Home;
 
 /***/ }),
 /* 80 */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-// removed by extract-text-webpack-plugin
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _EmployeeRow = __webpack_require__(81);
+
+var _EmployeeRow2 = _interopRequireDefault(_EmployeeRow);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var EmployeeTable = function (_React$Component) {
+    _inherits(EmployeeTable, _React$Component);
+
+    function EmployeeTable(props) {
+        _classCallCheck(this, EmployeeTable);
+
+        var _this = _possibleConstructorReturn(this, (EmployeeTable.__proto__ || Object.getPrototypeOf(EmployeeTable)).call(this, props));
+
+        _this.result = [];
+        return _this;
+    }
+
+    _createClass(EmployeeTable, [{
+        key: 'componentWillMount',
+        value: function componentWillMount() {
+            console.log(this.result);
+            var xhr = new XMLHttpRequest();
+            xhr.open('get', this.props.url, true);
+            xhr.onload = function () {
+                var response = JSON.parse(xhr.response);
+                this.setState(this.result = response);
+                //result = response;
+                console.log(this.result);
+            }.bind(this);
+            xhr.send();
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            console.log(this.result);
+            return _react2.default.createElement(
+                'table',
+                { className: 'table table-striped' },
+                _react2.default.createElement(
+                    'thead',
+                    null,
+                    _react2.default.createElement(
+                        'tr',
+                        null,
+                        _react2.default.createElement(
+                            'th',
+                            null,
+                            'Employee ID'
+                        )
+                    )
+                ),
+                _react2.default.createElement(
+                    'tbody',
+                    null,
+                    this.props.result.forEach(function (element) {
+                        _react2.default.createElement(_EmployeeRow2.default, { item: element });
+                    }, this)
+                )
+            );
+        }
+    }]);
+
+    return EmployeeTable;
+}(_react2.default.Component);
+
+;
+
+exports.default = EmployeeTable;
 
 /***/ }),
 /* 81 */
@@ -25927,7 +26018,44 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-__webpack_require__(82);
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var EmployeeRow = function EmployeeRow() {
+    return _react2.default.createElement(
+        'tr',
+        null,
+        _react2.default.createElement(
+            'td',
+            null,
+            undefined.props.item.EmployeeId
+        )
+    );
+};
+
+exports.default = EmployeeRow;
+
+/***/ }),
+/* 82 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 83 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+__webpack_require__(84);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -25950,18 +26078,6 @@ var About = function About() {
 exports.default = About;
 
 /***/ }),
-/* 82 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 83 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
 /* 84 */
 /***/ (function(module, exports) {
 
@@ -25969,6 +26085,18 @@ exports.default = About;
 
 /***/ }),
 /* 85 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 86 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 87 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
