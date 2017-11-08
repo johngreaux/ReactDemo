@@ -18,9 +18,37 @@ namespace ReactDemo.Controllers
             _repo = repo;
         }
 
-        public IQueryable<Employee> GetEmployeeList()
+        // GET: api/employee
+        public IEnumerable<Employee> Get()
         {
-            return _repo.GetEmployees().AsQueryable();
+            return _repo.GetEmployees();
+        }
+
+        // GET: api/employee/5
+        public Employee Get(int id)
+        {
+            return _repo.GetEmployeeById(id);
+        }
+
+        // POST: api/employee
+        public void Post(string jsonData)
+        {
+            _repo.AddEmployee(new Employee());
+            _repo.Save();
+        }
+
+        // PUT: api/employee/5
+        public void Put(int id, string jsonData)
+        {
+            var employee = _repo.GetEmployeeById(id);
+            _repo.Save();
+        }
+
+        // DELETE: api/employee/5
+        public void Delete(int id)
+        {
+            _repo.DeleteEmployee(id);
+            _repo.Save();
         }
     }
 }

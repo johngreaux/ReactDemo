@@ -3,7 +3,7 @@ using ReactDemo.Models.DAL;
 using System;
 using System.Data.Entity;
 
-namespace PeopleSearch.Models.DAL
+namespace ReactDemo.Models.DAL
 {
     public class EmployeeDBInitializer : CreateDatabaseIfNotExists<EmployeeContext>
     {
