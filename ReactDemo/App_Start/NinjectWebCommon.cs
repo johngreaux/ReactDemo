@@ -1,29 +1,32 @@
-﻿using Microsoft.Web.Infrastructure.DynamicModuleHelper;
-using Ninject;
-using Ninject.Web.Common;
-using Ninject.Web.Common.WebHost;
-using Ninject.Web.WebApi;
-using ReactDemo.Models.DAL;
-using System;
-using System.Web;
-using System.Web.Http;
+[assembly: WebActivatorEx.PreApplicationStartMethod(typeof(ReactDemo.App_Start.NinjectWebCommon), "Start")]
+[assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(ReactDemo.App_Start.NinjectWebCommon), "Stop")]
 
 namespace ReactDemo.App_Start
 {
-    public class NinjectWebCommon
+    using Microsoft.Web.Infrastructure.DynamicModuleHelper;
+    using Models.DAL;
+    using Ninject;
+    using Ninject.Web.Common;
+    using Ninject.Web.Common.WebHost;
+    using Ninject.Web.WebApi;
+    using System;
+    using System.Web;
+    using System.Web.Http;
+
+    public static class NinjectWebCommon 
     {
         private static readonly Bootstrapper bootstrapper = new Bootstrapper();
 
         /// <summary>
         /// Starts the application
         /// </summary>
-        public static void Start()
+        public static void Start() 
         {
             DynamicModuleUtility.RegisterModule(typeof(OnePerRequestHttpModule));
             DynamicModuleUtility.RegisterModule(typeof(NinjectHttpModule));
             bootstrapper.Initialize(CreateKernel);
         }
-
+        
         /// <summary>
         /// Stops the application.
         /// </summary>
@@ -31,7 +34,7 @@ namespace ReactDemo.App_Start
         {
             bootstrapper.ShutDown();
         }
-
+        
         /// <summary>
         /// Creates the kernel that will manage your application.
         /// </summary>
@@ -45,8 +48,7 @@ namespace ReactDemo.App_Start
                 kernel.Bind<IHttpModule>().To<HttpApplicationInitializationHttpModule>();
 
                 RegisterServices(kernel);
-                GlobalConfiguration.Configuration.DependencyResolver = new NinjectDependencyResolver(kernel);
-
+                //GlobalConfiguration.Configuration.DependencyResolver = new NinjectDependencyResolver(kernel);
                 return kernel;
             }
             catch
@@ -67,8 +69,7 @@ namespace ReactDemo.App_Start
                 .InRequestScope();
 
             kernel.Bind<IEmployeeRepository>()
-                .To<EmployeeRepository>()
-                .InRequestScope();
-        }
+                .To<EmployeeRepository>();
+        }        
     }
 }

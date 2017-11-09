@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using Newtonsoft.Json;
 
 namespace ReactDemo.Controllers
 {
@@ -19,15 +20,15 @@ namespace ReactDemo.Controllers
         }
 
         // GET: api/employee
-        public IEnumerable<Employee> Get()
+        public IHttpActionResult Get()
         {
-            return _repo.GetEmployees();
+            return Json(_repo.GetEmployees());
         }
 
         // GET: api/employee/5
-        public Employee Get(int id)
+        public IHttpActionResult Get(int id)
         {
-            return _repo.GetEmployeeById(id);
+            return Json(_repo.GetEmployeeById(id));
         }
 
         // POST: api/employee

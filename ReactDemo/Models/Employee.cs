@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace ReactDemo.Models
 {
@@ -9,8 +10,9 @@ namespace ReactDemo.Models
         {
 
         }
-
-        public int PersonId { get; set; }
+        
+        [Key]
+        public int EmployeeId { get; set; }
         public string Avatar { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }

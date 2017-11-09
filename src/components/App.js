@@ -97,8 +97,8 @@ class App extends React.Component {
                         <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12 no-padding">
                             <div className="row no-margin">
                                 <div className="HeaderIconPadding h2">
-                                    <span className="HeaderIcon glyphicon glyphicon-folder-open"></span>
-                                    <span className="HeaderIconPadding">Test</span>
+                                    <span className="HeaderIcon glyphicon glyphicon-user"></span>
+                                    <span className="HeaderIconPadding">Employee Management</span>
 
                                     <h5 className="NavLinkContainer">
                                         <Link className="NavLink" to="/Home" onClick={this.handleNavAction.bind(this, 0)}>Home</Link>
